@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Player.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -18,8 +19,12 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
+    // actor
+    Player *player;
+    
     // add
     void addListener();
+    void addPlayer();
 
     // タッチ
     virtual void onTouchesBegan(const std::vector<cocos2d::Touch*> &touches, cocos2d::Event* event);

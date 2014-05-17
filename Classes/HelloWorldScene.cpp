@@ -28,6 +28,7 @@ bool HelloWorld::init()
     }
     
     addListener();
+    addPlayer();
     
     return true;
 }
@@ -42,6 +43,17 @@ void HelloWorld::addListener()
     taplistener->onTouchesMoved = CC_CALLBACK_2(HelloWorld::onTouchesMoved, this);
     taplistener->onTouchesEnded = CC_CALLBACK_2(HelloWorld::onTouchesEnded, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(taplistener, this);
+}
+
+/*
+ * プレイヤーを表示
+ */
+void HelloWorld::addPlayer()
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    player = Player::create();
+    player->setPosition(Point(visibleSize.width/2, visibleSize.height/2));
+    this->addChild(player);
 }
 
 #pragma mark - タップアクション
